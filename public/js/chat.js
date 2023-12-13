@@ -1,5 +1,5 @@
 // Chatサーバに接続
-const url = "";
+const URL = "";
 const socket = io.connect(URL);
 
 socket.on("chat_message", (data) => {
