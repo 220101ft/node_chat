@@ -19,12 +19,12 @@ const port = process.env.PORT;
 // Socket.io モジュール読み込み
 const { Server } = require("socket.io");
 // Socket.io で通信
-const io = new Server();
+const io = new Server(server);
 
 // connection event
 io.on("connection", (socket) => {
     console.log("connected!!!");
-    console.log(socket.id);
+    console.log(`SocketID: ${socket.id}`);
 
     //chatメッセージの受信
     socket.on("chat_message", (data) => {
@@ -38,5 +38,6 @@ io.on("connection", (socket) => {
 
 // サーバ待機
 server.listen(port, host, () => {
+    console.log("Server Listen...");
     console.log(`listening on http://${host}:${port}`);
 });
